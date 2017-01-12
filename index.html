@@ -4,12 +4,20 @@
 	<meta charset="UTF-8">
 	<title>主页</title>
 </head>
-<body>
+<!-- onhashchange监测location.hash的变化 -->
+<body onhashchange='miniSPA.changeUrl();'>
 
 <div>主页</div>
 
 <button id='loginBtn'>去登录</button>
 <button id="registerBtn">去注册</button>
+
+<h1> Demo Contents:</h1>
+<a href="#home">Home (Default)</a>
+<a href="#postMD">POST request</a>
+<a href="#getEmoji">GET request</a>
+<a href="#wrong">Invalid url</a>
+<div id="demo"></div>
 
 <script src="js/expand.js"></script>
 <script src='js/main.js'></script>

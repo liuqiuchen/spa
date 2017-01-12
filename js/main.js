@@ -2,6 +2,20 @@ var loginBtn = getId('loginBtn');
 var registerBtn = getId('registerBtn');
 var stateManager = [];
 
+// 定义缺省页面和出错页面
+var home = {};
+home.partial = '../lib/home.html';
+home.init = function () {};
+
+var notFound = {}
+notFound.partial = '../lib/404.html';
+notFound.init = function () {
+	alert('Url does not exist. please check your code.');
+};
+
+// 定义主程序
+var miniSPA = {};
+
 function getId(idVal) {
 	return document.getElementById(idVal);
 }

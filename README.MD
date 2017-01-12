@@ -25,7 +25,7 @@ GitHub、微博、百度
 1. 拦截a标签的默认跳转动作。
 2. 使用Ajax请求新页面。
 3. 将返回的Html替换到页面中。
-4. 使用HTML5的History API或者Url的Hash修改Url。
+4. 使用HTML5的`History API`或者`Url的Hash修改Url`。
 
 可以将页面所有的跳转替换为AJAX请求，把网站改造成单页面应用。  
 note: 由于浏览器限制，history.pushState() + ajax需要在服务器环境下使用，
