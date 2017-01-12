@@ -1,4 +1,4 @@
-####single-page application (SPA)
+##single-page application (SPA)
 
 将网站打造成单页应用 A single-page application (SPA)  
 
