@@ -48,6 +48,6 @@ ajax({
         name2: 'value2'
     },
     success: function (response) {
-       console.log(response)；
+       console.log(response);
     }
 });
