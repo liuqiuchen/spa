@@ -15,6 +15,31 @@ notFound.init = function () {
 
 // 定义主程序
 var miniSPA = {};
+miniSPA.changeUrl = function () {
+	var url = location.hash.replace('#', '');
+	var status = 0;
+
+	if(url === '') {
+		url = 'home';
+	}
+	if (!url) {
+		url = 'notfound';
+	}
+    status = myAjax({
+    	url: url,
+    	method: 'POST',
+    	ele: 'demo'
+    });
+    console.log(status);
+    if(status == 404) {
+    	url = 'notfound';
+    	myAjax({
+    		url: url,
+    		method: 'POST',
+			ele: 'demo'
+    	});
+    }
+};
 
 function getId(idVal) {
 	return document.getElementById(idVal);

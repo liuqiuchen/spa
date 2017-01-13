@@ -30,3 +30,9 @@ GitHub、微博、百度
 可以将页面所有的跳转替换为AJAX请求，把网站改造成单页面应用。  
 note: 由于浏览器限制，history.pushState() + ajax需要在服务器环境下使用，
 即不要使用file://xxx.html运行。
+
+_学习资料：_  
+http://www.w3school.com.cn/ajax/ajax_xmlhttprequest_send.asp  
+http://web.jobbole.com/81990/  
+https://segmentfault.com/a/1190000002920768  
+
