@@ -2,23 +2,15 @@
 <html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
-	<title>主页</title>
+	<title>history.pushState + ajax实现spa</title>
 </head>
 <!-- onhashchange监测location.hash的变化 -->
-<body onhashchange='miniSPA.changeUrl();'>
+<body>
 
 <div>主页</div>
 
 <button id='loginBtn'>去登录</button>
 <button id="registerBtn">去注册</button>
-
-<!-- 每个 url 都以#号开头，这样就能被onhashchange事件抓取到 -->
-<h1> Demo Contents </h1>
-<a href="#home">Home (Default)</a>
-<a href="#postMD">Post request</a>
-<a href="#getEmoji">GET request</a>
-<a href="#wrong">Invalid url</a>
-<div id="demo"></div>
 
 <script src="js/expand.js"></script>
 <script src="js/ajax.js"></script>

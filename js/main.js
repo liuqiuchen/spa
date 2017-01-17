@@ -2,45 +2,6 @@ var loginBtn = getId('loginBtn');
 var registerBtn = getId('registerBtn');
 var stateManager = [];
 
-// 定义缺省页面和出错页面
-var home = {};
-home.partial = '../lib/home.html';
-home.init = function () {};
-
-var notFound = {}
-notFound.partial = '../lib/404.html';
-notFound.init = function () {
-	alert('Url does not exist. please check your code.');
-};
-
-// 定义主程序
-var miniSPA = {};
-miniSPA.changeUrl = function () {
-	var url = location.hash.replace('#', '');
-	var status = 0;
-
-	if(url === '') {
-		url = 'home';
-	}
-	if (!url) {
-		url = 'notfound';
-	}
-    status = myAjax({
-    	url: url,
-    	method: 'POST',
-    	ele: 'demo'
-    });
-    console.log(status);
-    if(status == 404) {
-    	url = 'notfound';
-    	myAjax({
-    		url: url,
-    		method: 'POST',
-			ele: 'demo'
-    	});
-    }
-};
-
 function getId(idVal) {
 	return document.getElementById(idVal);
 }

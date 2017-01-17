@@ -5,49 +5,64 @@
  * @param {object}opt.data 发送的参数，格式为对象类型
  * @param {function}opt.success ajax发送并接收成功调用的回调函数
  */
-function ajax(opt) {
-    opt = opt || {};
-    opt.method = opt.method.toUpperCase() || 'POST';
-    opt.url = opt.url || '';
-    opt.async = opt.async || true;
-    opt.data = opt.data || null;
-    opt.success = opt.success || function () {};
-    var xmlHttp = null;
-    if (XMLHttpRequest) {
-        xmlHttp = new XMLHttpRequest();
+function ajax(options) {
+    options = options || {};
+    options.method = options.method.toUpperCase() || 'POST';
+    options.url = options.url || '';
+    options.async = options.async || true;
+    options.data = options.data || null;
+    options.success = options.success || function () {};
+    options.error = options.error || function () {};
+
+    var xmlhttp = null;
+    if(XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
     }
-    else {
-        xmlHttp = new ActiveXObject('Microsoft.XMLHTTP');
-    }var params = [];
-    for (var key in opt.data){
-        params.push(key + '=' + opt.data[key]);
+    var params = [];
+    for(key in params) {
+        params.push(key + '=' + params[key]);
     }
     var postData = params.join('&');
-    if (opt.method.toUpperCase() === 'POST') {
-        xmlHttp.open(opt.method, opt.url, opt.async);
-        xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
-        xmlHttp.send(postData);
+
+    if(options.method == 'GET') {
+        xmlhttp.open(options.method, options.url, options.async);
+        xmlhttp.send();
+    } else if (options.method == 'POST') {
+        xmlhttp.open(options.method, options.url, options.async);
+        xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xmlhttp.send(postData);
     }
-    else if (opt.method.toUpperCase() === 'GET') {
-        xmlHttp.open(opt.method, opt.url + '?' + postData, opt.async);
-        xmlHttp.send(null);
-    } 
-    xmlHttp.onreadystatechange = function () {
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-            opt.success(xmlHttp.responseText);
+
+    xmlhttp.onreadystatechange = function () {
+        if(xmlhttp.readyState == 4) {
+            switch (xmlhttp.status) {
+                case 200:
+                    options.success(xmlhttp.responseText);
+                    break;
+                case 404:
+                    options.error('Not Found');
+                    break;
+                default:
+                    options.error('未知错误');
+            }
         }
     };
 }
 
 // 使用
-ajax({
+/*ajax({
     method: 'POST',
-    url: 'test.php',
+    url: './server/demo_get.json',
     data: {
-        name1: 'value1',
-        name2: 'value2'
+        data1: 'aaa',
+        data2: 'bbb'
     },
     success: function (response) {
        console.log(response);
+    },
+    error: function (err) {
+        console.log(err);
     }
-});
+});*/
