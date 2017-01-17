@@ -4,7 +4,6 @@ function getId(idVal) {
 
 var loginBtn = getId('loginBtn');
 var registerBtn = getId('registerBtn');
-var stateManager = [];
 
 var settings = {};
 settings.rootUrl = '/spa';
@@ -20,7 +19,7 @@ var postMD = {};
 postMD.partial = '/lib/postMD.html';
 postMD.init = function () {};
 
-var notFound = {}
+var notFound = {};
 notFound.partial = '/lib/404.html';
 notFound.init = function () {
 	alert('Url does not exist. please check your code.');
@@ -33,7 +32,7 @@ miniSPA.initFunc= function (partial) {
 	if(typeof fn === 'function') {
 		fn();
 	}
-}
+};
 miniSPA.changeUrl = function () {
 	var url = location.hash.replace('#', '');
 	var status = 0;
